@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python_Practice_5</title>
+</head>
+
+<body>
+    <h1>함수</h1>
+    <p>문제 1) : 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. n을 d(n)의 생성자라고 한다. 생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97. 10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.</p>
+    <p>입력 : X</p>
+    <p>출력 : 10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.</p>
+    <p>제한 : X</p>
+    <table border = "1" width = "100%" height = "200" cellspacing = "5">
+        <thead>
+            <tr>
+                <td>정답</td>
+                <td>결과</td>
+                <td>추가</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    N = set(range(1, 10001))<br>
+                    N_lt = set()<br>
+                    <br>
+                    for i in range(1, 10001): # 예) i = 850<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for k in str(i): # 예) j = '8', '5', '0'<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i += int(k) # 예) 850 + 8 + 5 + 0, i = 863<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;N_lt.add(i) # 생성자가 있는 숫자들<br>
+                    <br>
+                    self_N = sorted(N - N_lt)<br>
+                    for i in self_N:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                </td>
+                <td>
+                    입력<br>
+                    X<br>
+                    출력<br>
+                    1<br>
+                    3<br>
+                    5<br>
+                    7<br>
+                    9<br>
+                    20<br>
+                    .....<br>
+                    9982<br>
+                    9993
+                </td>
+                <td>
+                    # set() 함수는 중복을 제거하는 역할을 한다.<br>
+                    # 자연수를 set() 함수를 사용해서 1부터 10,000까지 하나의 변수로 설정하고 생성될 숫자를 또 하나의 변수로 만들어준다.<br>
+                    # 이중 반복문을 통해 입력되는 숫자열을 문자열로 바꿔준다. -> 850이 들어오면 8, 5, 0처럼 하나씩 떼어줄수 있다. -> 입력된 숫자열과 각 자리의 숫자를 더한 값을 생성될 변수에 넣어준다.<br>
+                    # 생성될 변수에는 결국 생성자로 생겨난 수들이 모이게 되며 셀프 넘버는 1부터 10,000까지의 변수에서 생성될 변수를 뺴주면 셀프 넘버만 남게 된다.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <p>문제 2) : 어떤 양의 숫자 X의 각 자리가 등차수열을 이룬다면, 그 수를 한수라고 한다. 등차수열은 연속된 두 개의 수의 차이가 일정한 수열을 말한다. N이 주어졌을 때, 1보다 크거나 같고, N보다 작거나 같은 한숙의 개수를 출력하는 프로그램을 작성하시오.</p>
+    <p>입력 : 첫째 줄에 1,000보다 작거나 같은 자연수 N이 주어진다.</p>
+    <p>출력 : 첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.</p>
+    <p>제한 : X</p>
+    <table border = "1" width = "100%" height = "200" cellspacing = "5">
+        <thead>
+            <tr>
+                <td>정답</td>
+                <td>결과</td>
+                <td>추가</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    N = int(input())<br>
+                    hansu = 0<br>
+                    <br>
+                    for i in range(1, N + 1):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if i < 100: # 1부터 99까지는 모두 한수<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hansu += 1<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N_str = list(map(int, str(i)))<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if N_str[2] - N_str[1] == N_str[1] - N_str[0]:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hansu += 1<br>
+                    <br>
+                    print(hansu)
+                </td>
+                <td>
+                    입력<br>
+                    110<br>
+                    출력<br>
+                    99
+                </td>
+                <td>
+                    # 1부터 99까지는 모두 한수이다.<br>
+                    # 100이상의 수일 때는 세 자리를 문자열로 각각 리스트화 시켜서 각 자리수끼리 등차수열을 이루는지 확인해준다. -> 1의자리 - 10의자리, 10의자리 - 100의자리<br>
+                    # 결과가 동일하면 한수를 하나씩 증가해준다.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+</body>
+</html>
