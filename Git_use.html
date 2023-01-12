@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Git 사용법</h1>
+    <p>1) Github 가입 -> New -> 프로젝트 이름 써주기</p>
+    <p>2) Git Bash 다운로드</p>
+    <p>3) git config --global user.name "자기이름"</p>
+    <p>4) git config --global user.emeail "깃허브 가입 이메일"</p>
+    <p>5) git config --list 입력 후 밑에 이름, 이메일 들어갔는지 확인</p>
+    
+    <h3>깃허브에 업로드</h3>
+    <p>1) git init (처음 업로드떄만 입력)</p>
+    <p>2) git add . (. = 전부 추가 / git add 파일이름)</p>
+    <p>3) git status (확인 작업)</p>
+    <p>4) git commit -m "first commit" (히스토리를 만들어주는 것 = 부가 설명)</p>
+    <p>5) git remote add origin 주소.git (주소 복사)</p>
+    <p>6) git remote -v (연결주소 확인)</p>
+    <p>7) git origin push / git push / git push --set-upstream origin master (업로드)</p>
+
+    <h3>코드를 바꾼경우(업데이트)</h3>
+    <p>1) git add .</p>
+    <p>2) git status (수정된 것 확인작업)</p>
+    <p>3) git commit -m "second commit" (새로운 히스토리)</p>
+    <p>4) git push origin master . git push</p>
+
+    <h3>깃허브 협엽</h3>
+    <p>1) 만든 프로젝트의 주소 링크를 받고 code 링크 복사</p>
+    <p>2) 새로운 폴더 생성</p>
+    <p>3) cmd창 -> git clone 링크 폴더이름</p>
+    <p>4) cd 폴더이름</p>
+    <p>5) code . (폴더에 다운로드하는 과정)</p>
+    <p>6) 원하는 코드 작성</p>
+
+    <h4>코드합치는 과정</h2>
+    <p>1) git add .</p>
+    <p>2) git commit -m "설명"</p>
+    <p>3) git checkout -b 이름 (master는 최종)</p>
+    <p>4) git push origin 이름</p>
+    <p>5) Git 사이트 -> 새로운 메세지 -> 메세지 남기기 -> create pull request</p>
+
+    <h5>(리더 입장)</h5>
+    <p>1) branck에 두가지 생긴 것 확인 -> pull request</p>
+    <p>2) 파일 확인하고 merge pull request (합치는 과정 -> 보라색인 경우 정상)</p>
+    <p>(만약 합쳐진 것과 지금 작성한 것을 합치고 싶은 경우) -> 동기화 필요</p>
+    <p>3) 작성 파일 우선 저장 후 git add .</p>
+    <p>4) git pull origin master (master 브랜치로 새로운 코드를 받아오는 과정 = 합쳐진다)</p>
+    <p>5) 완성되면 git push origin master</p>
+    <p>6) pull, push, pull, push의 반복</p>
+</body>
+</html>
